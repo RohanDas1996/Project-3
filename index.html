@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tip Calculator</title>
+</head>
+
+<style>
+  .istdiv {
+    font-size: 225%;
+    color: white;
+    text-align: center;
+    border: 1px solid white;
+    width: 25vw;
+    position: relative;
+    left: 40%;
+    border-radius: 5px;
+
+  }
+  body {
+    background-image: url(scifi_image.webp);
+    background-size: cover;
+  }
+
+  .sec_insidediv {
+    margin: auto;
+    height: 80vh;
+    padding-top: 40px;
+  }
+
+  .h {
+    margin: auto;
+    height: 60px;
+  }
+
+  .insidediv {
+    background-color: #A29BFE;
+    color: black;
+  }
+
+  #blamnt {
+    height: 30px;
+    font-weight: 800;
+  }
+
+  #tppercent {
+    height: 30px;
+    font-weight: 800;
+  }
+
+  #prsn {
+    height: 30px;
+    font-weight: 800;
+  }
+
+  #tpamnt {
+    height: 30px;
+    font-weight: 800;
+    background-color: white;
+    color: black
+  }
+
+  #tpayamnt {
+    height: 30px;
+    font-weight: 800;
+    background-color: white;
+    color: black;
+  }
+
+  #btn1 {
+    height: 30px;
+    width: 100px;
+    background: none;
+    border: 1px solid white;
+    color: white;
+  }
+
+  #btn2 {
+    height: 30px;
+    width: 100px;
+    background: none;
+    border: 1px solid white;
+    color: white;
+  }
+</style>
+
+<body>
+  <div class="istdiv">
+    <div class="insidediv">
+      <h4 class="h">Tip Calculator</h4>
+    </div>
+    <div class="sec_insidediv">
+      <label>Bill Amount</label>
+      <br>
+      <input id="blamnt" type="number" placeholder="Enter Bill Amount">
+      <br>
+      <label>Tip Percentage</label>
+      <br>
+      <input id="tppercent" type="number" placeholder="Enter Tip Percentage">
+      <br>
+      <label>Number of Persons</label>
+      <br>
+      <input id="prsn" type="number" placeholder="No. of persons">
+      <br>
+      <label>Tip Amount / Person</label>
+      <br>
+      <input id="tpamnt" type="number" disabled>
+      <br>
+      <label>Total Payable Amount</label>
+      <br>
+      <input id="tpayamnt" type="number" disabled>
+      <br>
+      <button id="btn1" onclick="calcy()"><b>Calculate</b></button>
+      <button id="btn2" onclick="clr()"><b>Clear</b></button>
+    </div>
+  </div>
+</body>
+<script>
+
+  function calcy() {
+
+    let a = parseInt(document.getElementById("blamnt").value);
+    let b = parseInt(document.getElementById("tppercent").value);
+    let p = parseInt(document.getElementById("prsn").value);
+
+    if (a > 1) {
+      if (b > 0) {
+        if (p > 0) {
+          if (b < 101) {
+            let c = b / 100;
+            let result = a * c;
+            let payable = (result * p) + a;
+
+            document.getElementById("tpamnt").value = result;
+            document.getElementById("tpayamnt").value = payable;
+          } else {
+            alert("Give a proper percentage value");
+          }
+        } else {
+          alert("person's value must be greater than 0");
+        }
+      } else {
+        alert("Give a proper percentage value");
+      }
+    } else {
+      alert("Bill Amount must be Greater");
+    }
+  }
+
+  function clr() {
+    document.getElementById("blamnt").value = "";
+    document.getElementById("tppercent").value = "";
+    document.getElementById("prsn").value = "";
+    document.getElementById("tpamnt").value = "";
+    document.getElementById("tpayamnt").value = "";
+  }
+
+</script>
+
+</html>
